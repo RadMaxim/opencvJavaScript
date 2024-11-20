@@ -1,0 +1,44 @@
+{
+  "scripts": {
+    "start": "webpack serve --open",
+    "lint": "npx eslint . --fix",
+    "format": "prettier --write .",
+    "lint-staged": "npx lint-staged",
+    "build:dev": "webpack --env  mode=development",
+    "build:prod": "webpack --env  mode=production"
+  },
+  "lint-staged": {
+    "./src/*.js": [
+      "npm run format",
+      "npm run lint",
+      "git add ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.12.0",
+    "html-webpack-plugin": "^5.6.3",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "webpack-dev-server": "^5.1.0"
+  }
+}

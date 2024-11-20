@@ -23,7 +23,7 @@ function openCvReady() {
       let utils = new Utils('errorMessage');
       let faceCascadeFile = 'haarcascade_frontalface_default.xml'; // path to xml
       utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
-      classifier.load(faceCascadeFile); // in the callback, load the cascade from file 
+      classifier.load(faceCascadeFile); 
   });
     
       function processVideo() {
@@ -38,25 +38,23 @@ function openCvReady() {
                 {
               let face = faces.get(0);
               let point1 = new cv.Point(face.x, face.y);
+              console.log(point1);
+              let pointForText = new cv.Point(face.x, face.y-20);
               let point2 = new cv.Point(face.x + face.width, face.y + face.height);
+              cv.putText(dst, 'any person', pointForText, cv.FONT_HERSHEY_SIMPLEX, 1, [0, 0, 255, 255], 2);
               cv.rectangle(dst, point1, point2, [0, 0, 0, 255],4);
             }
           }catch(err){
               console.log(err);
           }
-        //   for (let i = 0; i < faces.size(); ++i) {
-        //       let face = faces.get(i);
-        //       let point1 = new cv.Point(face.x, face.y);
-        //       let point2 = new cv.Point(face.x + face.width, face.y + face.height);
-        //       cv.rectangle(dst, point1, point2, [0, 0, 0, 255]);
-        //   }
+       
           
           cv.imshow("canvas_output", dst);
-          // schedule next one.
+        
         
           setTimeout(processVideo, 10);
   }
-  // schedule first one.
+
   setTimeout(processVideo, 0);
     };
   }

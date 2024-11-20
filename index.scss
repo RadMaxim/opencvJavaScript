@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@mixin gridContainer(){
+    display: grid;
+    grid-template-columns: 95%;
+    justify-content: center;
+    justify-items: center;
+}
+@mixin posElem(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    grid-template-rows: 15vh 70vh 15vh;
+    grid-template-areas: "head" "main" "footer";
+}
+header{
+    grid-area: head;
+}
+main{
+    grid-area: main;
+    @include gridContainer();
+    .main_container{
+        width: 100%;
+        height: 100%;
+        @include gridContainer();
+        .video{
+            @include gridContainer();
+            #cam_input{
+                display: none;
+            }
+            #canvas_output{
+                display: block;
+            }
+        }
+    }
+
+}
+footer{
+    grid-area: footer;
+}
