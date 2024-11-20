@@ -1,3 +1,6 @@
+// import "./index.css"
+// import "./js/opencv"
+// import "./js/utils"
 function openCvReady() {
     
     cv['onRuntimeInitialized']=()=>{
